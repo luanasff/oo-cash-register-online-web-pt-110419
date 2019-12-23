@@ -2,18 +2,18 @@ class CashRegister
 
   attr_accessor :items, :discount, :total, :last_transaction
 
-  def initialize(discount=0)     
-    @total = 0
-    @discount = discount
-    @items = []
+  def initialize(discount=0)       #optionally takes an employee discount on initialization
+    @total = 0                     #sets an instance variable @total on initialization to 0 
+    @discount = discount           
+    @items = []                    # returns an array containing all items that have been added
   end
 
-  def add_item(title, amount, quantity=1)
-    self.total += amount * quantity
+  def add_item(title, amount, quantity=1)   #accepts a title and price and optional quantity
+    self.total += amount * quantity         #increases the total
     quantity.times do
       items << title
     end
-    self.last_transaction = amount * quantity
+    self.last_transaction = amount * quantity       #doesnt forget ab the previous total
   end
 
   def apply_discount
